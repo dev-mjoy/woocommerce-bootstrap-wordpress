@@ -1,10 +1,10 @@
 <?php
+	/**
+	 * Bootstrap Breadcrumb for WooCommerce
+	 */
 remove_action( 'woocommerce_before_main_content','woocommerce_breadcrumb',20);
 add_action( 'woocommerce_before_main_content','woocommerce_breadcrumb_mjdev');
 
-	/**
-	 * Output the WooCommerce Breadcrumb
-	 */
 	function woocommerce_breadcrumb_mjdev( $args = array() ) {
 		$args = wp_parse_args( $args, apply_filters( 'woocommerce_breadcrumb_defaults', array(
 			'delimiter'   => '&nbsp;&#47;&nbsp;',
