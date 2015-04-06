@@ -39,4 +39,29 @@ print_r($args['wrap_before']);
 print_r($args['wrap_after']);
 }
 
+/*
+* Bootstrap buttons overriding existing woocommerce 'add to cart' buttons
+*
+*/
+add_filter( 'woocommerce_loop_add_to_cart_link', 'add_to_cart_mjdev_courses' );
+function add_to_cart_mjdev_courses(){
+global $product;
+
+/*
+* esc_url( $product->add_to_cart_url() )  : returns add to cart link(eg- '/?add-to-cart=110' ) 
+* esc_attr( $product->id ) : returns products id ('110')
+* esc_attr( $product->get_sku() ) : returns product sku
+* esc_attr( isset( $quantity ) ? $quantity : 1 ) : returns product quantity
+* $product->is_purchasable() && $product->is_in_stock() ? 'add_to_cart_button' : '' ----- on stock available appends the necessary class
+* esc_attr( $product->product_type ) : return type of product
+* esc_html( $product->add_to_cart_text() ) : returns button text
+ */
+
+$btn_active = $product->is_purchasable() && $product->is_in_stock() ? 'add_to_cart_button' : 'disabled';
+$add_to_cart_text = "Enroll Now";
+        return '<a href="'.esc_url( $product->add_to_cart_url() ).'" rel="nofollow" data-product_id="'.esc_attr( $product->id ).'" data-product_sku="'.esc_attr( $product->get_sku() ).'" data-quantity="'.esc_attr( isset( $quantity ) ? $quantity : 1 ).'" class="btn btn-warning btn-lg '.$btn_active.' product_type_"> '.$add_to_cart_text.' <i class="fa fa-rocket"></i></a>';
+}
+
+
+
 ?>
