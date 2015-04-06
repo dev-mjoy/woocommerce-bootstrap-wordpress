@@ -1,4 +1,11 @@
 <?php
+/*
+* Author:Mrittunjoy Das
+* url: mjdev.in
+* Description: Implementing Bootstrap Components in Wordpress custom theme functions.php for (WooCommerce Plugin)
+*/
+?>
+<?php
 	/**
 	 * Bootstrap Breadcrumb for WooCommerce
 	 */
